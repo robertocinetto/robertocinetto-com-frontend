@@ -1,0 +1,34 @@
+@use "sass:math";
+@import 'sass-variables';
+
+@mixin breakpoint($point, $axis: width, $range: max, $type: screen) {
+    @media #{$type} and (#{$range}-#{$axis}: $point) { @content; }
+}
+
+// Set font-size in REM but only think about pixels
+// eg. @include font-size(16);
+@mixin font-size($size) {
+    $sizeInRem: math.div($size, 16) * 1rem;
+    font-size: $sizeInRem;
+}
+
+// Creates responsive typograhy between min and max size, based on @screen-xs and $screen-lg
+// eg. to scale between 20px and 32px: 
+// @include font-size-clamp(20,32);
+// More info: https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/#aa-step-1
+@mixin font-size-clamp($minFont, $maxFont, $minScreen: $screen-xs, $maxScreen: $screen-xl) {
+    $pixelsPerRem: 16; // Browser default
+    $minScreen-unitless: math.div($minScreen, 1px);
+    $maxScreen-unitless: math.div($maxScreen, 1px);
+
+    $minRem: math.div($minFont, $pixelsPerRem);
+    $maxRem: math.div($maxFont, $pixelsPerRem);
+
+    $minWidth: math.div($minScreen-unitless, $pixelsPerRem);
+    $maxWidth: math.div($maxScreen-unitless, $pixelsPerRem);
+
+    $slope: math.div(($maxRem - $minRem), ($maxWidth - $minWidth));
+    $yAxisIntersect: (-$minWidth) * $slope + $minRem;
+
+    font-size: clamp(($minRem * 1rem),($yAxisIntersect * 1rem) + ($slope * 100vw), ($maxRem * 1rem));
+}

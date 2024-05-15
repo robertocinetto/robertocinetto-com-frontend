@@ -1,0 +1,60 @@
+@import '../utils/mixins';
+
+// Layout-related utility classes
+.alignfull {
+	margin-inline: calc(-1 * var(--page-padding));
+	padding-inline: var(--page-padding);
+}
+.alignwide {
+	margin-inline: auto;
+	max-width: var(--width-wide);
+	width: 100%;
+}
+.alignnone {
+	margin-inline: auto;
+	max-width: var(--width-regular);
+	width: 100%;
+}
+.grid-12 {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-gap: var(--grid-gap);
+
+	@include breakpoint($screen-md) {
+		display: block;
+	}
+
+	@for $i from 1 through 12 {
+		.col--start-#{$i} {
+			grid-column-start: $i;
+		}
+		.col--end-#{$i} {
+			grid-column-end: $i + 1;
+		}
+		.col-span-#{$i} {
+			grid-column: span $i;
+		}
+	}
+}
+
+.grid-9 {
+	display: grid;
+	grid-template-columns: repeat(9, 1fr);
+	grid-gap: var(--grid-gap-lg);
+
+	@include breakpoint($screen-md) {
+		display: block;
+	}
+
+	@for $i from 1 through 9 {
+		.col--start-#{$i} {
+			grid-column-start: $i;
+		}
+		.col--end-#{$i} {
+			grid-column-end: $i + 1;
+		}
+		.col-span-#{$i} {
+			grid-column: span $i;
+		}
+	}
+}

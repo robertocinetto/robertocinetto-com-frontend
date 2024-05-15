@@ -1,0 +1,55 @@
+@import 'sass-variables';
+
+:root {
+	// Sizing and spacing
+	--spacing-vertical: max(1rem, 0.4em);
+	--spacing-1: 1.875rem;
+	--spacing-2: 3.75rem;
+	--spacing-3: 5rem;
+	--spacing-4: 7.5rem;
+	--spacing-5: 13.375rem;
+	--page-padding: 1.625rem;
+	--heading-font: "Archivo", sans-serif;
+	--body-font: "Montserrat", sans-serif;
+	--width-wide: 1564px;
+	--width-regular: 1320px;
+	--grid-gap: 1.25rem;
+	--grid-gap-lg: 2.875rem;
+	--header-height: 8rem;
+	--header-height-pinner: 5.25rem;
+
+	// Type scale
+	--type-size-12: 0.75rem;
+	--type-size-13: 0.8125rem;
+	--type-size-14: 0.8725rem;
+	--type-size-15: 0.9375rem;
+	--type-size-16: 1rem;
+	--type-size-18: 1.125rem;
+	--type-size-26: clamp(1.125rem, 0.7917rem + 1.1111vw, 1.625rem);
+	--type-size-28: clamp(1.375rem, 1.2089rem + 0.5535vw, 1.75rem);
+	--type-size-30: clamp(1.375rem, 1.0417rem + 1.1111vw, 1.875rem);
+	--type-size-40: clamp(1.625rem, 1.2375rem + 1.2915vw, 2.5rem);
+	--type-size-50: clamp(1.625rem, 0.625rem + 3.3333vw, 3.125rem);
+	--type-size-90: clamp(2.5rem, 0.4968rem + 6.4103vw, 5.625rem);
+	--type-size-110: clamp(2.5rem, 1.0417rem + 4.8611vw, 6.875rem);
+	--type-size-120: clamp(1.625rem, 0.625rem + 3.3333vw, 3.125rem);
+	--type-size-170: clamp(2.5rem, -2.9167rem + 18.0556vw, 10.625rem);
+
+	// Colours defaults, can be overridden in API settings see layout.js
+	--colour-white: rgba(255, 255, 255, 1);
+	--colour-black: rgba(0, 0, 0, 1);
+	--colour-background: var(--colour-white);
+    --colour-foreground: var(--colour-black);
+    --colour-primary: rgba(64, 63, 162, 1);
+    --colour-primary-dark: rgba(4, 0, 101, 1);
+    --colour-secondary: rgba(0, 255, 185, 1);
+	--colour-secondary-dark: #00A18F;
+
+	// Breakpoints
+	// These are used in the breakpoint mixin and getBreakpoints
+	--screen-xs: #{$screen-xs};
+	--screen-sm: #{$screen-sm};
+	--screen-md: #{$screen-md};
+	--screen-lg: #{$screen-lg};
+	--screen-xl: #{$screen-xl};
+}
