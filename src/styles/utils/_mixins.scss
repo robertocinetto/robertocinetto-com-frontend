@@ -1,5 +1,4 @@
 @use "sass:math";
-@import 'sass-variables';
 
 @mixin breakpoint($point, $axis: width, $range: max, $type: screen) {
     @media #{$type} and (#{$range}-#{$axis}: $point) { @content; }

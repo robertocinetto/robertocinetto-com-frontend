@@ -6,7 +6,7 @@ import qs from 'qs'
  * @returns {string} Full Strapi URL
  */
 export function getStrapiURL(path = '') {
-  return `${process.env.STRAPI_API_URL || 'http://localhost:1337'}${path}`
+  return `${process.env.STRAPI_API_URL || 'http://127.0.0.1:1337'}${path}`
 }
 
 /**
@@ -29,7 +29,6 @@ export async function fetchAPI(path, urlParamsObject = {}, options = {}) {
   // Build request URL
   const queryString = qs.stringify(urlParamsObject)
   const requestUrl = `${getStrapiURL(`/api${path}${queryString ? `?${queryString}` : ''}`)}`
-  // console.log(queryString)
 
   // Trigger API call
   const response = await fetch(requestUrl, mergedOptions)
