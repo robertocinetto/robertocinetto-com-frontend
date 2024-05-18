@@ -1,9 +1,9 @@
-import { Lato, Open_Sans } from 'next/font/google'
+import { Lato, Open_Sans, Rubik } from 'next/font/google'
 import '@/styles/globals.scss'
 import { fetchAPI } from '@/lib/api'
 import { getStrapiMedia } from '@/lib/media'
 
-
+const rubik = Rubik({ subsets: ['latin'], weight: ['400', '500', '700'], variable: '--font-rubik' })
 const lato = Lato({ subsets: ['latin'], weight: ['400', '700', '900'], variable: '--font-lato' })
 const openSans = Open_Sans({ subsets: ['latin'], variable: '--font-open-sans' })
 
@@ -46,7 +46,7 @@ export async function generateMetadata() {
 const RootLayout = ({ children }) => {
 	return (
 		<html lang='en'>
-			<body className={`${openSans.className} ${openSans.variable} ${lato.variable}`}>{children}</body>
+			<body className={`${openSans.className} ${rubik.variable} ${openSans.variable} ${lato.variable}`}>{children}</body>
 		</html>
 	)
 }

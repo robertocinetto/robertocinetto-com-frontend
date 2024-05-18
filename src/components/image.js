@@ -8,7 +8,6 @@ const Image = ({ image, className, layout = 'responsive', objectFit = 'contain',
   const theHeight = height ? height : image.data.attributes.height
 
   return (
-    <div className={className}>
       <NextImage
         layout={layout}
         width={theWidth}
@@ -16,8 +15,8 @@ const Image = ({ image, className, layout = 'responsive', objectFit = 'contain',
         objectFit={objectFit}
         src={getStrapiMedia(image)}
         alt={alternativeText || ''}
+				className={className}
       />
-    </div>
   )
 }
 
