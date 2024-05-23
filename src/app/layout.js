@@ -9,16 +9,19 @@ const openSans = Open_Sans({ subsets: ['latin'], variable: '--font-open-sans' })
 
 
 export async function generateMetadata() {
-	const WebsiteData = await fetchAPI('/website-setting', {
-		populate: {
-      Favicon: '*',
-      DefaultSEO: {
-        populate: '*',
-      },
-      SiteLogo: '*',
-      SiteLogoDark: '*',
-    },
-	})
+	const WebsiteData = await fetchAPI('/website-setting', 
+		{
+			populate: {
+				Favicon: '*',
+				DefaultSEO: {
+					populate: '*',
+				},
+				SiteLogo: '*',
+				SiteLogoDark: '*',
+			},
+		},
+		{ next: { revalidate: 100 } }
+	)
 
 	return {
 		title: {
