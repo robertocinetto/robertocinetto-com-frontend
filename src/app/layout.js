@@ -9,17 +9,21 @@ const openSans = Open_Sans({ subsets: ['latin'], variable: '--font-open-sans' })
 
 
 export async function generateMetadata() {
-	const WebsiteData = await fetchAPI('/website-setting', {
-		populate: {
-      Favicon: '*',
-      DefaultSEO: {
-        populate: '*',
-      },
-      SiteLogo: '*',
-      SiteLogoDark: '*',
-    },
-	})
-	console.log(WebsiteData.data.attributes.DefaultSEO)
+
+	const WebsiteData = await fetchAPI('/website-setting', 
+		{
+			populate: {
+				Favicon: '*',
+				DefaultSEO: {
+					populate: '*',
+				},
+				SiteLogo: '*',
+				SiteLogoDark: '*',
+			},
+		},
+		{ next: { revalidate: 100 } }
+	)
+	
 	return {
 		icons: {
 			icon: getStrapiMedia(WebsiteData.data.attributes.Favicon),

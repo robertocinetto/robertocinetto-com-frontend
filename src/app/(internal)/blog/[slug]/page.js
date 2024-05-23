@@ -4,16 +4,22 @@ import HighlightedContentClient from '@/components/highlightedContentClient'
 import Image from '@/components/image'
 
 async function getPostData(params) {
-	const postData = await fetchAPI(`/posts`, {
-		filters: {
-			Slug: params.slug,
-		},
-		populate: {
-			FeaturedImage: { populate: '*' },
-			SEO: { populate: '*' },
-		},
-	})
-	return postData.data[0].attributes
+	const postData = await fetchAPI(
+		`/posts`, 
+		{
+			filters: {
+				Slug: params.slug,
+			},
+			populate: {
+				FeaturedImage: { populate: '*' },
+				SEO: { populate: '*' },
+			},
+		}, 
+		{
+			next: { revalidate: 10 }
+		}
+	)
+	return postData.data[0] ? postData.data[0].attributes : null
 }
 
 
@@ -23,6 +29,10 @@ export async function generateMetadata({ params }, parent) {
 	const parentOpenGraph = await parent
 	const parentOpenGraphImage = parentOpenGraph.openGraph?.images || []
 
+	if (!postData) {
+		return {}
+	}
+	
 	return {
 		title: postData.SEO?.MetaTitle,
 		description: postData.SEO?.MetaDescription,
@@ -30,7 +40,7 @@ export async function generateMetadata({ params }, parent) {
 			title: postData.SEO?.MetaTitle,
 			description: postData.SEO?.MetaDescription,
 			url: `https://robertocinetto.com/blog/${postData.Slug}`,
-			images: [postData.SEO?.ShareImage ? getStrapiMedia(postData.SEO.ShareImage) : null, , ...parentOpenGraphImage],
+			images: [postData.SEO?.ShareImage ? getStrapiMedia(postData.SEO.ShareImage) : null, ...parentOpenGraphImage],
 		},
 	}
 }
