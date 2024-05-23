@@ -19,8 +19,7 @@ async function getPostData(params) {
 			next: { revalidate: 10 }
 		}
 	)
-	console.log(postData)
-	return postData.data[0].attributes ? postData.data[0].attributes : null
+	return postData.data[0] ? postData.data[0].attributes : null
 }
 
 
@@ -30,10 +29,10 @@ export async function generateMetadata({ params }, parent) {
 	const parentOpenGraph = await parent
 	const parentOpenGraphImage = parentOpenGraph.openGraph?.images || []
 
-	if (postData === null) {
+	if (!postData) {
 		return {}
 	}
-
+	
 	return {
 		title: postData.SEO?.MetaTitle,
 		description: postData.SEO?.MetaDescription,
@@ -41,7 +40,7 @@ export async function generateMetadata({ params }, parent) {
 			title: postData.SEO?.MetaTitle,
 			description: postData.SEO?.MetaDescription,
 			url: `https://robertocinetto.com/blog/${postData.Slug}`,
-			images: [postData.SEO.ShareImage ? getStrapiMedia(postData.SEO.ShareImage) : null, ...parentOpenGraphImage],
+			images: [postData.SEO?.ShareImage ? getStrapiMedia(postData.SEO.ShareImage) : null, ...parentOpenGraphImage],
 		},
 	}
 }
