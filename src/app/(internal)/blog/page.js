@@ -3,10 +3,9 @@ import { fetchAPI } from "@/lib/api"
 
 const Page = async () => {
 	const posts = await fetchAPI('/posts', { populate: '*' })	
-	console.log(posts.data[0].attributes.FeaturedImage)
 	return (
 		<div className='container mx-auto'>
-			{posts.data.map((post)=>(
+			{posts.data && posts.data.map((post)=>(
 				<Card 
 						key={post.attributes.id}
 						slug={post.attributes.Slug}	

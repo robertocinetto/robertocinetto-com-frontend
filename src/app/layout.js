@@ -20,7 +20,6 @@ export async function generateMetadata() {
     },
 	})
 
-
 	return {
 		title: {
 			template: '%s | Roberto Cinetto',
@@ -34,7 +33,7 @@ export async function generateMetadata() {
 			siteName: WebsiteData.data.attributes.DefaultSEO.MetaTitle,
 			images: [
 				{
-					url: getStrapiMedia(WebsiteData.data.attributes.DefaultSEO.ShareImage),
+					// url: getStrapiMedia(WebsiteData.data.attributes.DefaultSEO.ShareImage),
 					width: 1600,
 					height: 1200,
 				}
@@ -46,7 +45,7 @@ export async function generateMetadata() {
 const RootLayout = ({ children }) => {
 	return (
 		<html lang='en'>
-			<body className={`${openSans.className} ${rubik.variable} ${openSans.variable} ${lato.variable}`}>{children}</body>
+			<body className={`${openSans.className} ${rubik.variable} ${openSans.variable} ${lato.variable} antialiased`}>{children}</body>
 		</html>
 	)
 }

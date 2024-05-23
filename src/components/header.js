@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { ImLinkedin2, ImGithub } from 'react-icons/im'
+import { FaXTwitter } from "react-icons/fa6";
 import { DevicePhoneMobileIcon, EnvelopeIcon } from '@heroicons/react/24/outline'
 
 const Header = () => {
@@ -17,9 +18,12 @@ const Header = () => {
 				<a href='https://github.com/robertocinetto' target='_blank' rel='noreferrer'>
 					<ImGithub className='w-[20px] h-[20px]' />
 				</a>
-				<a href='tel:+12368869279'>
-					<DevicePhoneMobileIcon className='w-[20px] h-[20px]' />
+				<a href="https://x.com/Robertocinetto" target='_blank' rel='noreferrer'>
+					<FaXTwitter className='w-[20px] h-[20px]' />
 				</a>
+				{/* <a href='tel:+12368869279'>
+					<DevicePhoneMobileIcon className='w-[20px] h-[20px]' />
+				</a> */}
 				<a href='mailto:roberto.cinetto@gmail.com' target='_blank' rel='noreferrer'>
 					<EnvelopeIcon className='w-[20px] h-[20px]' />
 				</a>

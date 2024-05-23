@@ -29,12 +29,12 @@ export async function fetchAPI(path, urlParamsObject = {}, options = {}) {
   // Build request URL
   const queryString = qs.stringify(urlParamsObject)
   const requestUrl = `${getStrapiURL(`/api${path}${queryString ? `?${queryString}` : ''}`)}`
-
+	console.log(requestUrl)
   // Trigger API call
   const response = await fetch(requestUrl, mergedOptions)
 
   // Handle response
-  if (!response.ok) {
+  if (!response.ok) { 
     console.error(response.statusText)
     throw new Error(`An error occured please try again`)
   }
