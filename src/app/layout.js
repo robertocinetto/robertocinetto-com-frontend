@@ -19,8 +19,11 @@ export async function generateMetadata() {
       SiteLogoDark: '*',
     },
 	})
-
+	console.log(WebsiteData.data.attributes.DefaultSEO)
 	return {
+		icons: {
+			icon: getStrapiMedia(WebsiteData.data.attributes.Favicon),
+		},
 		title: {
 			template: '%s | Roberto Cinetto',
 			default: WebsiteData.data.attributes.DefaultSEO.MetaTitle,
@@ -33,7 +36,7 @@ export async function generateMetadata() {
 			siteName: WebsiteData.data.attributes.DefaultSEO.MetaTitle,
 			images: [
 				{
-					// url: getStrapiMedia(WebsiteData.data.attributes.DefaultSEO.ShareImage),
+					url: getStrapiMedia(WebsiteData.data.attributes.DefaultSEO.ShareImage),
 					width: 1600,
 					height: 1200,
 				}
