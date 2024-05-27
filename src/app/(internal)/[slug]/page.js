@@ -12,12 +12,14 @@ async function getPageData(params) {
 			SEO: { populate: '*' },
 		},
 	})
-	return pageData.data[0].attributes
+	return pageData.data[0] ? pageData.data[0].attributes : null
 }
 
 
 export async function generateMetadata({ params }, parent) {
 	const pageData = await getPageData(params)
+
+	if (!pageData) return {}
 
 	return {
 		title: pageData.SEO?.MetaTitle,
@@ -32,6 +34,8 @@ export async function generateMetadata({ params }, parent) {
 
 export default async function PageSingle({ params }) {
 	const pageData = await getPageData(params)
+
+	if (!pageData) return null
 
 	const wordCount = pageData.Content.split(" ").length
 	const readingTime = Math.ceil(wordCount / 200)
