@@ -7,7 +7,7 @@ import { DevicePhoneMobileIcon, EnvelopeIcon } from '@heroicons/react/24/outline
 
 const Header = () => {
 	return (
-		<header className='container mx-auto py-5 flex justify-between my-10'>
+		<header className='header container mx-auto py-5 flex flex-wrap-reverse justify-center gap-4 md:justify-between my-4 md:my-10'>
 			<Link href='/blog'>
 				<Image src='/logo-roberto-cinetto.svg' alt='Roberto Cinetto logo' width={300} height={200} />
 			</Link>

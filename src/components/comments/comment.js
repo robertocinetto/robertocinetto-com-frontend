@@ -7,7 +7,7 @@ import CommentDate from "./commentDate"
 import { deleteComment } from "@/server/comment-actions"
 import { useState } from "react"
 
-export default function Comment({ comment, handleReply, postSlug }) {
+export default function Comment({ comment, postSlug }) {
 	const [isReplyingToThisComment, setIsReplyingToThisComment] = useState(false)
 	const searchParams = useSearchParams()
 
