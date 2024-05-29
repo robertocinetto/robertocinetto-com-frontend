@@ -2,6 +2,34 @@ html, body {
 	font-size: 18px;
 }
 
+article a,
+footer a {
+	color: var(--colour-primary-dark);
+	text-decoration: underline;
+
+	&:hover {
+		text-decoration: none;
+	}
+
+	&[target="_blank"] {
+		position: relative;
+		margin-right: 1rem;
+
+		&::after {
+			content: "\2197";
+			position: absolute;
+			right: -1rem;
+			font-size: 10px;
+			border: 1px solid var(--colour-primary-dark);
+			border-radius: 2px;
+			width: 15px;
+			height: 15px;
+			line-height: normal;
+			top: calc(50% - 7.5px);
+		}
+	}
+}
+
 p {
 	margin-bottom: 0.75rem;
 }
@@ -14,16 +42,17 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 
 h1, .h1 {
 	font-size: 3rem;
-	font-weight: 700;
+	font-weight: 500;
 }
 
 h2, .h2 {
 	font-size: 2rem;
+	font-weight: 500;
 }
 
 h3, .h3 {
 	font-size: 1.5rem;
-	font-weight: 400;
+	font-weight: 500;
 }
 
 h4, .h4 {
