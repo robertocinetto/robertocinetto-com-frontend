@@ -16,7 +16,7 @@ export function getStrapiURL(path = '') {
  * @param {Object} options Options passed to fetch
  * @returns Parsed API call response
  */
-export async function fetchAPI(path, urlParamsObject = {}, options = {}) {
+export async function fetchAPI(path, urlParamsObject = {}, options = {}, log = false) {
   // Merge default and user options
   const mergedOptions = {
     headers: {
@@ -30,9 +30,10 @@ export async function fetchAPI(path, urlParamsObject = {}, options = {}) {
   const queryString = qs.stringify(urlParamsObject)
   const requestUrl = `${getStrapiURL(`/api${path}${queryString ? `?${queryString}` : ''}`)}`
 
-	console.log('requestUrl', requestUrl)
-	console.log('mergedOptions', mergedOptions)
-
+	if (log) {
+		console.log('requestUrl', requestUrl)
+		console.log('mergedOptions', mergedOptions)
+	}
   // Trigger API call
   const response = await fetch(requestUrl, mergedOptions)
 
