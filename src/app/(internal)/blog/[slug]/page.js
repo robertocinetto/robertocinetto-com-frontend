@@ -56,8 +56,8 @@ export default async function BlogSingle({ params }) {
 		<article className='grid-12 mb-10 ck-content'>
 			<Image image={postDataAttributes.FeaturedImage} className='col--start-1 col--end-12 mb-6 max-h-[500px] overflow-hidden object-cover object-center' />
 			<div className='col--start-4 col--end-9 container'>
-				<h1 className='h2 md:text-center'>{postDataAttributes.Title}</h1>
-				<h2 className='h5 md:text-center text-slate-600'>{postDataAttributes.Summary}</h2>
+				<h1 className='h1 md:text-center'>{postDataAttributes.Title}</h1>
+				<h2 className='h4 md:text-center text-slate-600'>{postDataAttributes.Summary}</h2>
 				<div className='flex flex-wrap gap-y-2 items-center justify-center text-center text-sm text-neutral-600 mt-8 mb-12'>
 					<span className='article-author text-nowrap'><a href="https://www.linkedin.com/in/robertocinetto/" target='_blank' className='font-bold'>Roberto Cinetto</a></span>
 					<span className="mx-3 block font-bold text-slate-500 ">·</span>

@@ -1,0 +1,41 @@
+.ck-content {
+
+	//GENERAL STYLES
+	p {
+		font-size: 1.125rem;
+		font-size: clamp( 1.125rem, 4vw, 1.25rem );
+	}
+
+	h2, .h2 {
+		font-size: 2rem;
+		font-weight: 500;
+		margin-block: 4rem 2rem;
+	}
+
+	h3, .h3 {
+		font-size: 1.5rem;
+		font-weight: 500;
+	}
+	
+	h4, .h4 {
+		font-size: 1.25rem;
+		margin-block: 2rem 1rem;
+	}
+
+	h5, .h5 {
+		font-size: 1rem;
+	}
+
+	figure.image,
+	p:has(> img) {
+		margin-block: 2rem;
+	}
+
+
+
+	// STYLES' STYLES
+	.inline-code {
+		background-color: var(--colour-primary-light);
+		padding: 0.1rem 0.5rem;
+	}
+}
