@@ -58,7 +58,7 @@ export default async function BlogSingle({ params }) {
 			<div className='col--start-4 col--end-9 container'>
 				<h1 className='h1 md:text-center'>{postDataAttributes.Title}</h1>
 				<h2 className='h4 md:text-center text-gray-600'>{postDataAttributes.Summary}</h2>
-				<div className='flex flex-col flex-wrap gap-y-2 items-start md:items-center justify-center text-center bg-gray-100 text-sm text-neutral-600 p-2 mt-8 mb-12 rounded'>
+				<div className='flex flex-col md:flex-row flex-wrap gap-y-2 items-start md:items-center justify-center text-center bg-gray-100 text-sm text-neutral-600 p-2 mt-8 mb-12 rounded'>
 					<span className='article-author text-nowrap'><a href="https://www.linkedin.com/in/robertocinetto/" target='_blank' className='font-bold'>Roberto Cinetto</a></span>
 					<span className="mx-3 block font-bold text-slate-500 hidden md:inline">·</span>
 					<span className='article-date text-nowrap'>{new Date(postDataAttributes.createdAt).toLocaleString('en-US', { month: 'short', day: '2-digit', year: 'numeric' })}</span>
