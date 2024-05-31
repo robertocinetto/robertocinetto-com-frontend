@@ -1,4 +1,5 @@
 .ck-content {
+	overflow-wrap: break-word;
 
 	//GENERAL STYLES
 	p {
@@ -8,6 +9,7 @@
 
 	h2, .h2 {
 		font-size: 2rem;
+		font-size: clamp( 1.5rem, 4vw, 2rem );
 		font-weight: 500;
 		margin-block: 4rem 2rem;
 	}
@@ -31,6 +33,26 @@
 		margin-block: 2rem;
 	}
 
+	// CODE STYLES
+	pre {
+		
+		@include breakpoint($screen-md) {
+			tab-size: 1;
+			white-space: pre;
+		}
+
+		code.hljs {
+			font-size: clamp( 0.875rem, 4vw, 1rem );
+	
+			@include breakpoint($screen-md) {
+				padding: 0;
+			}
+		}
+
+		.hljs-comment {
+			color: var(--colour-primary-light);
+		}
+	}
 
 
 	// STYLES' STYLES
