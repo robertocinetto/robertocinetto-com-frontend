@@ -16,7 +16,7 @@ export  default async function Comments( { postId, postSlug }) {
 
       <div className="space-y-6">
 				{commentsData && commentsData.map((comment) => {
-					return <Comment key={comment.id} comment={comment} postSlug={postSlug} />
+					return <Comment key={comment.id} comment={comment} postSlug={postSlug} postId={postId} />
 				})}
       </div>
 

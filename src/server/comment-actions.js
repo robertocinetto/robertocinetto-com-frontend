@@ -26,9 +26,9 @@ export const createComment = async (formData) => {
 	revalidatePath(`/blog/${formData.get('postSlug')}`)
 }
 
-export const deleteComment = async (commentId, commentAuthorId, postSlug) => {
+export const deleteComment = async (commentId, commentAuthorId, postSlug, postId) => {
 	console.log('commentId', commentId, 'commentAuthorId', commentAuthorId)
-	const deleteComment = await fetchAPI(`/comments/api::post.post:1/comment/${commentId}?authorId=${commentAuthorId}`, {},
+	const deleteComment = await fetchAPI(`/comments/api::post.post:${postId}/comment/${commentId}?authorId=${commentAuthorId}`, {},
 		{
 			method: 'DELETE'
 		}

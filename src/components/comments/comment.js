@@ -7,7 +7,7 @@ import CommentDate from "./commentDate"
 import { deleteComment } from "@/server/comment-actions"
 import { useState } from "react"
 
-export default function Comment({ comment, postSlug }) {
+export default function Comment({ comment, postSlug, postId }) {
 	const [isReplyingToThisComment, setIsReplyingToThisComment] = useState(false)
 	const searchParams = useSearchParams()
 
@@ -18,8 +18,8 @@ export default function Comment({ comment, postSlug }) {
 		setIsReplyingToThisComment(true)
 	};
 
-	async function handleDeleteComment(commentId, commentAuthorId) {
-		await deleteComment(commentId , commentAuthorId, postSlug)
+	async function handleDeleteComment(commentId, commentAuthorId, postId) {
+		await deleteComment(commentId , commentAuthorId, postSlug, postId)
 	}
 
 	return(
@@ -30,7 +30,7 @@ export default function Comment({ comment, postSlug }) {
 			</Avatar>
 			<div className="grid gap-1.5">
 				<div className="flex items-center gap-2">
-					<div className="font-medium">{comment.author.name}</div>
+					<div className="font-medium">{comment.author.name + comment.id}</div>
 					<div className="text-xs text-gray-500 dark:text-gray-400">
 						<CommentDate comment={comment} />
 					</div>
@@ -41,7 +41,7 @@ export default function Comment({ comment, postSlug }) {
 						<ReplyIcon className="w-4 h-4" />
 						<span className="sr-only">Reply</span>
 					</Button>
-					<Button className="hover:bg-transparent" size="icon" variant="ghost" onClick={ () => handleDeleteComment(comment.id, comment.author.id) }>
+					<Button className="hover:bg-transparent" size="icon" variant="ghost" onClick={ () => handleDeleteComment(comment.id, comment.author.id, postId) }>
 						<XIcon className="w-4 h-4" />
 						<span className="sr-only">Delete</span>
 					</Button>
