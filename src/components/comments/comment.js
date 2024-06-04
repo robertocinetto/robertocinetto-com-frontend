@@ -30,7 +30,7 @@ export default function Comment({ comment, postSlug }) {
 			</Avatar>
 			<div className="grid gap-1.5">
 				<div className="flex items-center gap-2">
-					<div className="font-medium">{comment.author.name + comment.id}</div>
+					<div className="font-medium">{comment.author.name}</div>
 					<div className="text-xs text-gray-500 dark:text-gray-400">
 						<CommentDate comment={comment} />
 					</div>
